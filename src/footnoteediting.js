@@ -193,7 +193,7 @@ export default class FootNoteEditing extends Plugin {
         // (model → editing view)
         conversion.for( 'editingDowncast' ).elementToElement( {
             model: 'footNote',
-            view: ( modelElement, viewWriter ) => {
+            view: ( modelElement, { writer: viewWriter } ) => {
                 const section = viewWriter.createContainerElement( 'section', { class: 'footnote' } );
                 
                 return toWidget( section, viewWriter, { label: 'footnote widget' } );
@@ -218,7 +218,7 @@ export default class FootNoteEditing extends Plugin {
 
         conversion.for( 'editingDowncast' ).elementToElement( {
             model: 'footNoteTitle',
-            view: ( modelElement, viewWriter ) => {
+            view: ( modelElement, { writer: viewWriter } ) => {
                 const widgetElement = createTitleView( modelElement, viewWriter );
                 return toWidget( widgetElement, viewWriter );
             }
@@ -258,7 +258,7 @@ export default class FootNoteEditing extends Plugin {
 
         conversion.for( 'editingDowncast' ).elementToElement( {
             model: 'footNoteList',
-            view: ( modelElement, viewWriter ) => {
+            view: ( modelElement, { writer: viewWriter } ) => {
                 // Note: You use a more specialized createEditableElement() method here.
                 const section = viewWriter.createEditableElement( 'section', { class: 'footnote-list' } );
 
@@ -288,7 +288,7 @@ export default class FootNoteEditing extends Plugin {
         
         conversion.for( 'editingDowncast' ).elementToElement( {
             model: 'footNoteItem',
-            view: ( modelElement, viewWriter ) => {
+            view: ( modelElement, { writer: viewWriter } ) => {
                 // Note: You use a more specialized createEditableElement() method here.
                 const section = createItemView( modelElement, viewWriter );
                 return toWidget( section, viewWriter );
@@ -325,7 +325,7 @@ export default class FootNoteEditing extends Plugin {
 
         conversion.for( 'editingDowncast' ).elementToElement( {
             model: 'noteHolder',
-            view: ( modelElement, viewWriter ) => {
+            view: ( modelElement, { writer: viewWriter } ) => {
                 const widgetElement = createPlaceholderView( modelElement, viewWriter );
 
                 // Enable widget handling on a placeholder element inside the editing view.
